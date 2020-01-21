@@ -1,0 +1,104 @@
+{% extends 'base_admin.html' %}
+
+{% load static %}
+{% load staticfiles %}
+
+{% block content %}
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">UBold</a></li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Forms</a></li>
+                        <li class="breadcrumb-item active">Elements</li>
+                    </ol>
+                </div>
+                <h4 class="page-title">Basic Elements</h4>
+            </div>
+        </div>
+    </div>
+    <!-- end page title -->
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    {% if msg %}
+                        <h3 class="" style="color: red">{{ msg }}</h3>
+                    {% endif %}̥
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <form action="{% url 'ecomadminapp:product-category' %}" method="post"
+                                  enctype="multipart/form-data">
+                                {% csrf_token %}
+
+                                <div class="form-group mb-3">
+                                    <label for="simpleinput">Name</label>
+                                    <input type="text" name="name" class="form-control">
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <label for="simpleinput">Image</label>
+                                    <input type="file" name="image" class="form-control">
+                                </div>
+
+
+                                <div class="form-group mb-3">
+                                    <label for="example-textarea">Description</label>
+                                    <textarea class="form-control" name="descriptions" rows="5"></textarea>
+                                </div>
+                                <div class="form-group mb-3">
+
+                                   <button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
+                                </div>
+                                ̥
+
+                            </form>
+                        </div> <!-- end col -->
+
+
+                    </div>
+                    <!-- end row-->
+                  <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="header-title">Basic Data Table</h4>
+
+
+                                <table id="basic-datatable" class="table dt-responsive nowrap">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Description</th>
+
+                                        </tr>
+                                    </thead>
+
+
+                                    <tbody>
+                                    {% for product in products %}
+                                        <tr>
+                                            <td>{{ product.name }}</td>
+                                            <td>{{ product.descriptions }}</td>
+
+                                        </tr>
+                                       {% endfor %}
+                                    </tbody>
+                                </table>
+
+                            </div> <!-- end card body-->
+                        </div> <!-- end card -->
+                    </div><!-- end col-->
+                </div>
+
+                </div> <!-- end card-body -->
+            </div> <!-- end card -->
+        </div><!-- end col -->
+    </div>
+    <!-- end row -->̥
+
+{% endblock %}
